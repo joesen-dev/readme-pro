@@ -22,7 +22,7 @@ const questions = [
       }
     },
   },
-  // ******************************** PROJECT TITLE **********************************
+  // ********************************  TITLE **********************************
   {
     type: "input",
     name: "title",
@@ -36,7 +36,7 @@ const questions = [
       }
     },
   },
-  // ******************************** PROJECT DESCRIPTION **********************************
+  // ******************************** DESCRIPTION **********************************
   {
     type: "input",
     name: "description",
@@ -50,6 +50,46 @@ const questions = [
       }
     },
   },
+  // ******************************** INSTALLATION *******************************************
+  {
+    type: "editor",
+    name: "installation",
+    message: `What are the steps required to install your project? (required)
+          Provide a step-by-step description of how to get the development environment running.
+          If you're familiar with markdown, you can enter it into your editor and the program will read it.
+          Enter your text, save and close the editor.
+          `,
+    validate: (nameInput) => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log("Please enter your app installation instructions");
+        return false;
+      }
+    },
+  },
+  // ******************************** USAGE *******************************************
+  {
+    type: "editor",
+    name: "usage",
+    message: `Provide instructions and examples for use of your application. (required)
+          Include screenshots as needed.
+          If you're familiar with markdown, you can enter it into your editor and the program will read it.
+          Enter your text, save and close the editor.
+          `,
+    validate: (nameInput) => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log(
+          "Most High-Quality README File have a Usage section. Please add something to yours!"
+        );
+        return false;
+      }
+    },
+  },
+  // ******************************** LICENSE *******************************************
+  //   {},
 ];
 
 /** PROMPT QUESTIONS FUNCTIONS --------------------------------
