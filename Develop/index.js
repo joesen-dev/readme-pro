@@ -3,16 +3,13 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generatePage = require("./utils/generateMarkdown");
 
-// TODO: store user input in an Array
-const tableOfContentsFilter = [];
-
 // TODO: Create an array of questions for user input
 const questions = [
-  // ******************************** WHO ARE YOU? **********************************
+  // ******************************** User Name **********************************
   {
     type: "input",
     name: "userName",
-    message: "Please enter your username (required)",
+    message: "Please enter your github user name (required)",
     validate: (nameInput) => {
       if (nameInput) {
         return true;
@@ -52,6 +49,11 @@ const questions = [
   },
   // ******************************** INSTALLATION *******************************************
   {
+    type: "confirm",
+    name: "addInstallInstructions",
+    default: "true",
+  },
+  {
     type: "editor",
     name: "installation",
     message: `What are the steps required to install your project? (required)
@@ -59,6 +61,13 @@ const questions = [
           If you're familiar with markdown, you can enter it into your editor and the program will read it.
           Enter your text, save and close the editor.
           `,
+    when: ({ addInstallInstructions }) => {
+      if (addInstallInstructions) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     validate: (nameInput) => {
       if (nameInput) {
         return true;
@@ -89,20 +98,59 @@ const questions = [
     },
   },
   // ******************************** LICENSE *******************************************
-  //   {},
+  {
+    type: "confirm",
+    name: "confirmLicense",
+    default: "true",
+  },
+  {
+    type: "checkbox",
+    name: "license",
+    message: "Please select a license",
+    choices: ["MIT"],
+    when: ({ confirmLicense }) => {
+      if (confirmLicense) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    validate: (License) => {
+      if (License.length > 0) {
+        return true;
+      } else {
+        console.log("Please select a license!");
+        return false;
+      }
+    },
+  },
+  // ******************************** TABLE OF CONTENTS *******************************************
+  {
+    type: "checkbox",
+    name: "tableOfContents",
+    message: "What's included in your table of contents? (required)",
+    choices: ["Installation", "Usage", "License"],
+    validate: (tableOfContents) => {
+      if (tableOfContents.length === 3) {
+        return true;
+      } else {
+        console.log("Selected table of contents");
+        return false;
+      }
+    },
+  },
 ];
 
 /** PROMPT QUESTIONS FUNCTIONS --------------------------------
  **************************************************************************************************/
-// TODO: I would like to filter User's responses to the Table of Contents prompt and have the program only send prompt based on user's table of contents
-const promptUserSection1 = async () => {
-  let data;
+const promptUser = async (readmeData) => {
+  // let data;
   await inquirer
-    .prompt(questions)
+    .prompt(questions) // ? can i include a forEach loop here
     .then((answers) => {
-      data = answers;
-      if (answers.confirmTableOfContents === false) {
-        console.log("No Table of Contents");
+      readmeData = answers;
+      if (readmeData) {
+        console.log("here is your data", readmeData);
       }
     })
     .catch((error) => {
@@ -112,17 +160,12 @@ const promptUserSection1 = async () => {
         // Something else went wrong
       }
     });
-
-  console.log(
-    "Hello, " + data.userName + "." + " Here's your answers Object!",
-    data
-  );
-  return data;
+  return readmeData;
 };
 
 // TODO: Create a function to write README file
-function writeToFile(data) {
-  fs.writeFile("../README.md", generatePage(data), (err) => {
+function writeToFile(readmeData) {
+  fs.writeFile("../README.md", generatePage(readmeData), (err) => {
     if (err) throw error;
     console.log("The file has been successfully written!");
   });
@@ -133,9 +176,8 @@ function init() {
   console.log(`Hi there!
 =========================
 `);
-  promptUserSection1().then((data) => {
-    console.log("This is the line being printed", data);
-    writeToFile(data);
+  promptUser().then((readmeData) => {
+    return writeToFile(readmeData);
   });
 }
 init();
