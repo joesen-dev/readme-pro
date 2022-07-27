@@ -59,8 +59,8 @@
 
   #### Questions
   **How to reach me**
-  <a href="undefined">Github</a>
-  Email senjoseph90@gmail.com
+  - <a href="undefined">Github</a>
+  - Email senjoseph90@gmail.com
    
   
   
