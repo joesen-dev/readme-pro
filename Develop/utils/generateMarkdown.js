@@ -85,7 +85,7 @@ function generateMarkdown(templateData) {
 
   #### Questions
   **How to reach me**
-  - <a href="${templateData.gitbub}">Github</a>
+  - <a href="${templateData.github}">Github</a>
   - Email ${templateData.email}
    
   `;
