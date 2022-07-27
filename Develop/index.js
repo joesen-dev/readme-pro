@@ -5,16 +5,29 @@ const generatePage = require("./utils/generateMarkdown");
 
 // TODO: Create an array of questions for user input
 const questions = [
-  // ******************************** User Name **********************************
+  // ******************************** User Info **********************************
   {
     type: "input",
-    name: "userName",
-    message: "Please enter your github user name (required)",
+    name: "github",
+    message: "Please enter your github URL (required)",
     validate: (nameInput) => {
       if (nameInput) {
         return true;
       } else {
-        console.log("Please enter your user name!");
+        console.log("Please enter your github URL!");
+        return false;
+      }
+    },
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "Please enter your email address",
+    validate: (nameInput) => {
+      if (nameInput) {
+        return true;
+      } else {
+        console.log("Please enter your email address!");
         return false;
       }
     },

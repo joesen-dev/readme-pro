@@ -10,16 +10,12 @@ function renderLicenseBadge(confirmLicense) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(tableOfContents, license) {
+function renderLicenseLink(license) {
   if (!license) {
     return "";
   }
-
-  return `
-  "Licensed under the "
-  <a href="/microsoft/vscode/blob/main/LICENSE.txt">MIT</a>
-  "license"
-  `;
+  return (this.name =
+    'Licensed under the <a href="/microsoft/vscode/blob/main/LICENSE.txt">MIT</a> license.');
 }
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
@@ -29,11 +25,10 @@ function renderLicenseSection(confirmLicense) {
   }
 
   return `
-  ## License
   MIT License 
   
   Copyright (c) 2022 Joseph 
-
+  
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to deal
   in the Software without restriction, including without limitation the rights
@@ -57,7 +52,7 @@ function renderLicenseSection(confirmLicense) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(templateData) {
-  const { confirmLicense, tableOfContents } = templateData;
+  const { confirmLicense, tableOfContents, license, email } = templateData;
   if (!tableOfContents) {
     return "";
   }
@@ -84,7 +79,15 @@ function generateMarkdown(templateData) {
   ## Usage
   ${templateData.usage}
   
+  ## License
   ${renderLicenseSection(confirmLicense)}
+  ${renderLicenseLink(license)}
+
+  #### Questions
+  **How to reach me**
+  - <a href="${templateData.gitbub}">Github</a>
+  - Email ${templateData.email}
+   
   `;
 }
 
