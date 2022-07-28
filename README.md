@@ -22,13 +22,13 @@ You will need Node.js to run the application. You can find a guide on installati
 
 **Step 3**
 The repo comes with a package.json with the required dependencies to type the following command into your CLI
-> `npm install inquirer`
+> `npm install`
 
 You should now see a directory called node_modules and a package-lock.json.
 
 Now you’re ready to start generating your README.
-  ## Usage
-  ##### To run the application, type enter <sub>_node \<filename\>_</sub> into your command prompt.
+ ## Usage
+##### To run the application, type enter <sub>_node \<filename\>_</sub> into your command prompt.
 **Use case example**
 
 > `node index.js`
@@ -36,8 +36,9 @@ Now you’re ready to start generating your README.
 The app will give you a series of prompts to answer. Some are required while others are optional. For some of the more involved sections, you will be prompted to open a notepad for your answers. If you’re familiar with the markdown syntax, feel free to use it while writing in the note pad as this will be rendered accordingly in your readme at the end. 
 Once you’ve answered all the questions, your README file is auto generated.
 
+This [demo](https://drive.google.com/file/d/1O9O-PmQBbY611gHgPqYdJcZaqRulGHE9/view?usp=sharing) shows the app in action!
   
-  ## License
+ ## License
   
   MIT License 
   
