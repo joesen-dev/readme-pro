@@ -9,7 +9,7 @@
   - [Usage](#usage)
   - [License](#license)
   ## Installation
-  ## Installation
+ 
 You will need Node.js to run the application. You can find a guide on installation [here](https://coding-boot-camp.github.io/full-stack/nodejs/how-to-install-nodejs).
 
 **Step 1**
