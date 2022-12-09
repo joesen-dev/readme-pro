@@ -34,6 +34,12 @@ Now you’re ready to start generating your README.
 
 ## Usage
 
+##### To run the application, type enter <sub>_node \<filename\>_</sub> into your command prompt.
+
+**Use case example**
+
+> `node index.js`
+
 The app will give you a series of prompts to answer. Some are required, while others are optional. The app prompts you to open a notepad for your answers for some sections. Data entered in the notepad should be formatted in the markdown language, as this will be rendered accordingly in your readme at the end.
 
 Save and close the notepad once you've entered the requested data.
