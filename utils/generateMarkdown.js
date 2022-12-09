@@ -2,17 +2,17 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(confirmLicense) {
   if (!confirmLicense) {
-    return "";
+    return '';
   }
 
-  return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+  return '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (!license) {
-    return "";
+    return '';
   }
   return (this.name =
     'Licensed under the <a href="/microsoft/vscode/blob/main/LICENSE.txt">MIT</a> license.');
@@ -21,7 +21,7 @@ function renderLicenseLink(license) {
 // If there is no license, return an empty string
 function renderLicenseSection(confirmLicense) {
   if (!confirmLicense) {
-    return "";
+    return '';
   }
 
   return `
@@ -54,16 +54,17 @@ function renderLicenseSection(confirmLicense) {
 function generateMarkdown(templateData) {
   const { confirmLicense, tableOfContents, license, email } = templateData;
   if (!tableOfContents) {
-    return "";
+    return '';
   }
   function myFunction(item, index, arr) {
     arr[index] = item;
   }
   tableOfContents.forEach(myFunction);
-  const item = tableOfContents.join(" ").split(" ");
+  const item = tableOfContents.join(' ').split(' ');
   var item1 = item[0];
   var item2 = item[1];
   var item3 = item[2];
+  var item4 = item[3];
 
   return `
   # ${templateData.title}
@@ -71,13 +72,16 @@ function generateMarkdown(templateData) {
   ## Description
   ${templateData.description}
   ## Table of Contents
-  - ${"[" + item1 + "]" + "(" + "#" + item1.toLowerCase() + ")"}
-  - ${"[" + item2 + "]" + "(" + "#" + item2.toLowerCase() + ")"}
-  - ${"[" + item3 + "]" + "(" + "#" + item3.toLowerCase() + ")"}
+  - ${'[' + item1 + ']' + '(' + '#' + item1.toLowerCase() + ')'}
+  - ${'[' + item2 + ']' + '(' + '#' + item2.toLowerCase() + ')'}
+  - ${'[' + item3 + ']' + '(' + '#' + item3.toLowerCase() + ')'}
+  - ${'[' + item4 + ']' + '(' + '#' + item4.toLowerCase() + ')'}
   ## Installation
   ${templateData.installation}
   ## Usage
   ${templateData.usage}
+  ## Screenshots
+  ${templateData.screenshots}
   
   ## License
   ${renderLicenseSection(confirmLicense)}
@@ -91,7 +95,7 @@ function generateMarkdown(templateData) {
   `;
 }
 
-module.exports = (templateData) => {
+module.exports = templateData => {
   return `
     ${generateMarkdown(templateData)}
   `;
