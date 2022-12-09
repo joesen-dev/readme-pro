@@ -30,8 +30,6 @@ The repo comes with a package.json with the required dependencies to type the fo
 
 > `npm install`
 
-> `npm install`
-
 Now you’re ready to start generating your README.
 
 ## Usage
